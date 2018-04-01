@@ -7,15 +7,13 @@ app.set('view engine', 'pug');
 
 // the get method is used to handle the get requests to a certain URL
 app.get('/', (req, res) => {
-	res.send('<h3>Home</h3>');
+	res.render('index');
 });
 
-app.get('/history', (req, res) => {
-	res.send('<h3>History</h3>');
-});
-
-app.get('/about', (req, res) => {
-	res.send('<h3>About</h3>')
+app.get('/card', (req, res) => {
+	// res.render('card');
+	// res.render('card', { question: 'What is always coming, but never arrives?', hint: 'Think about time'});
+	res.render('card', { question: 'What is always coming, but never arrives?'});
 });
 
 app.listen(3000, () => {
