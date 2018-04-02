@@ -11,9 +11,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/card', (req, res) => {
-	// res.render('card');
 	// res.render('card', { question: 'What is always coming, but never arrives?', hint: 'Think about time'});
 	res.render('card', { question: 'What is always coming, but never arrives?'});
+});
+
+app.get('/hello', (req, res) => {
+	res.render('hello');
+});
+
+app.post('/hello', (req, res) => {
+	res.render('hello');
 });
 
 app.listen(3000, () => {
