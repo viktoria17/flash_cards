@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 // we call expresss to create an Express app
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
 
 app.set('view engine', 'pug');
 
@@ -19,10 +21,12 @@ app.get('/card', (req, res) => {
 });
 
 app.get('/hello', (req, res) => {
-	res.render('hello');
+	res.render('hello', {name: req.cookies.username});
 });
 
 app.post('/hello', (req, res) => {
+	// sends a cookie to the browser after we submit the form
+	res.cookie('username', req.body.username);
 	console.dir(req.body);
 	res.render('hello', {name: req.body.username});
 });
