@@ -12,7 +12,12 @@ app.set('view engine', 'pug');
 
 // the get method is used to handle the get requests to a certain URL
 app.get('/', (req, res) => {
-	res.render('index');
+	const name = req.cookies.username;
+	if(name){
+		res.render('index', {name});
+	}else {
+		res.redirect('/');
+	}
 });
 
 app.get('/card', (req, res) => {
@@ -21,14 +26,19 @@ app.get('/card', (req, res) => {
 });
 
 app.get('/hello', (req, res) => {
-	res.render('hello', {name: req.cookies.username});
+	const name = req.cookies.username;
+	if (name) {
+		res.redirect('/');
+	} else {
+		res.render('hello');
+	}
 });
 
 app.post('/hello', (req, res) => {
 	// sends a cookie to the browser after we submit the form
 	res.cookie('username', req.body.username);
 	console.dir(req.body);
-	res.render('hello', {name: req.body.username});
+	res.redirect('/');
 });
 
 app.listen(3000, () => {
