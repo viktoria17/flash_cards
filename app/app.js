@@ -10,6 +10,18 @@ app.use(cookieParser());
 
 app.set('view engine', 'pug');
 
+app.use((req, res, next) => {
+	req.msg = 'This is message!';
+	console.log('Hello');
+	// we end middleware by calling next or sending a response
+	next();
+});
+
+app.use((req, res, next) => {
+	console.log(req.msg);
+	next();
+});
+
 // the get method is used to handle the get requests to a certain URL
 app.get('/', (req, res) => {
 	const name = req.cookies.username;
