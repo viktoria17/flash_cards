@@ -22,41 +22,11 @@ app.use((req, res, next) => {
 	next();
 });
 
-// the get method is used to handle the get requests to a certain URL
-app.get('/', (req, res) => {
-	const name = req.cookies.username;
-	if(name){
-		res.render('index', {name});
-	}else {
-		res.redirect('/');
-	}
-});
+const mainRouter = require('../routes');
+const cardRouter = require('../routes/card');
 
-app.get('/card', (req, res) => {
-	// res.render('card', { question: 'What is always coming, but never arrives?', hint: 'Think about time'});
-	res.render('card', { question: 'What is always coming, but never arrives?'});
-});
-
-app.get('/hello', (req, res) => {
-	const name = req.cookies.username;
-	if (name) {
-		res.redirect('/');
-	} else {
-		res.render('hello');
-	}
-});
-
-app.post('/hello', (req, res) => {
-	// sends a cookie to the browser after we submit the form
-	res.cookie('username', req.body.username);
-	console.dir(req.body);
-	res.redirect('/');
-});
-
-app.post('/goodbye', (req, res) => {
-	res.clearCookie('username');
-	res.redirect('/hello')
-});
+app.use(mainRouter);
+app.use('/card', cardRouter);
 
 app.use((req, res, next) => {
 	const err = new Error('Not Found');
