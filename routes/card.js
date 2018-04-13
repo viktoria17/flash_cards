@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const data = require('../data/flashcardData.json').data;
-const cards = data.cards;
+const { data } = require('../data/flashcardData.json');
+const { cards } = data;
 
 router.get('/', (req, res) => {
 	// every route in this file starts with /card, because we are directing traffic into this file from the card path in the app.js file
