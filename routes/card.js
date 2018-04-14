@@ -17,8 +17,12 @@ router.get('/:id', (req, res) => {
 	const hint = cards[id].hint;
 	console.log('hint: ', hint); // => They are delicious with milk
 
-	const templateData = { text, hint };
-	
+	const templateData = { text };
+
+	if (side === 'question') {
+		templateData.hint = hint;
+	}
+
 	res.render('card', templateData);
 });
 
