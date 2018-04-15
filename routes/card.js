@@ -21,13 +21,16 @@ router.get('/:id', (req, res) => {
 		res.redirect(`/card/${id}?side=question`);
 	}
 
+	const name = req.cookies.username;
+	console.log('NAME: ',name);
+
 	const text = cards[id][side];
 	console.log('question: ', text); // => What is one way a website can store data in a user's browser?
 
 	const { hint } = cards[id];
 	console.log('hint: ', hint); // => They are delicious with milk
 
-	const templateData = { id, text };
+	const templateData = { id, text, name };
 
 	if (side === 'question') {
 		templateData.hint = hint;
