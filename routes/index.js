@@ -4,10 +4,10 @@ const router = express.Router();
 // the get method is used to handle the get requests to a certain URL
 router.get('/', (req, res) => {
 	const name = req.cookies.username;
-	if(name){
-		res.render('index', {name});
-	}else {
-		res.redirect('/');
+	if (name) {
+		res.render('index', { name });
+	} else {
+		res.redirect('/hello');
 	}
 });
 

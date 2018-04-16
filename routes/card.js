@@ -18,7 +18,7 @@ router.get('/:id', (req, res) => {
 	console.log('id: ', id); // => 1
 
 	if (!side) {
-		return res.redirect(`/card/${id}?side=question`);
+        return res.redirect(`/card/${id}?side=question`);
 	}
 
 	const name = req.cookies.username;
@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 	const { hint } = cards[id];
 	console.log('hint: ', hint); // => They are delicious with milk
 
-	const templateData = { id, text, name };
+	const templateData = { id, text, name, side };
 
 	if (side === 'question') {
 		templateData.hint = hint;
