@@ -1,7 +1,7 @@
 # flash_cards
 Building a dynamic website on the Node.js platform using Express.js framework.
 
-<h3>More details about the Flashcard application.</pre>
+<h3>More details about the Flashcard application.</h3>
 <pre>   This is a personalized flashcard application. The app accepts the name of a user and it greets him.</pre>
 <pre>   From the Home page, we can launch a flashcard study session.</pre>
 <pre>   App gives flashcards in a random order. </pre>
